@@ -19,7 +19,7 @@ int main() {
 
     if (pidfirst == 0) {
         close(pipefd[0]);
-        std::string s = "Wrtie to second child";
+        std::string s = "Wrtie to second child\n";
         write(pipefd[1], s.c_str(), s.size());
         close(pipefd[1]);
         std::cout << "ㄅㄅ1" << std::endl;
@@ -48,5 +48,5 @@ int main() {
                       // or child that reads the pipe would be blocked
     waitpid(pidfirst, NULL, 0);
     waitpid(pidsecond, NULL, 0);
-    std::cout << "first: " << pidfirst << "second: " << pidsecond << std::endl;
+    std::cout << "first: " << pidfirst << "\nsecond: " << pidsecond << std::endl;
 }
