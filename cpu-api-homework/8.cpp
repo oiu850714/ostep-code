@@ -43,7 +43,10 @@ int main() {
         exit(EXIT_SUCCESS);
     }
 
+    close(pipefd[0]);
+    close(pipefd[1]); // the most parent process should close write end of the pipe
+                      // or child that reads the pipe would be blocked
     waitpid(pidfirst, NULL, 0);
-    waitpid(pidsecond, NULL, 0); // stock
+    waitpid(pidsecond, NULL, 0);
     std::cout << "first: " << pidfirst << "second: " << pidsecond << std::endl;
 }
