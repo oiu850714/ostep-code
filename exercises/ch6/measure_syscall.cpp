@@ -9,7 +9,7 @@ double getEstimatedSyscallTime(const timeval &start, const timeval &end, const i
 }
 
 int main() {
-    timeval start{}, end{};
+    struct timeval start{}, end{};
     constexpr int iteration = 1000000;
     gettimeofday(&start, nullptr);
     for (int i = 0; i < iteration; i++) {
